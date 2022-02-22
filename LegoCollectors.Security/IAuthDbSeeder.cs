@@ -1,4 +1,4 @@
-namespace ScrumMasters.Webshop.Security
+namespace LegoCollectors.Security
 {
     public interface IAuthDbSeeder
     {

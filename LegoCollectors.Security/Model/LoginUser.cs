@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ScrumMasters.Webshop.Security.Model
+namespace LegoCollectors.Security.Model
 {
     public class LoginUser
     {

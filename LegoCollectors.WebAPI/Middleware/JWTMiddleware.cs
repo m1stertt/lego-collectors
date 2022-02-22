@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ScrumMasters.Webshop.Security.Model;
+using LegoCollectors.Security.Model;
 
 namespace lego_collectors.Middleware
 {

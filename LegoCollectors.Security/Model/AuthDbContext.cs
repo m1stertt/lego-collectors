@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ScrumMasters.Webshop.Security.Model
+namespace LegoCollectors.Security.Model
 {
     public class AuthDbContext : DbContext
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using ScrumMasters.Webshop.Security.Model;
+using LegoCollectors.Security.Model;
 
-namespace ScrumMasters.Webshop.Security
+namespace LegoCollectors.Security
 {
     public interface IAuthRepository
     {

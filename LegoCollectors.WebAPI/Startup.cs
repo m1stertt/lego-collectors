@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
 using lego_collectors.Middleware;
+using LegoCollectors.Security;
+using LegoCollectors.Security.Model;
+using LegoCollectors.Security.Services;
 //using LegoCollection.DataAccess;
 //using LegoCollection.DataAccess.IRepository;
 //using LegoCollection.DataAccess.IService;
@@ -15,9 +18,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using ScrumMasters.Webshop.Security;
-using ScrumMasters.Webshop.Security.Model;
-using ScrumMasters.Webshop.Security.Services;
 using VueCliMiddleware;
 
 namespace lego_collectors

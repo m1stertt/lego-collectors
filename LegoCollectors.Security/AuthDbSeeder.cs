@@ -1,14 +1,15 @@
-using ScrumMasters.Webshop.Security.Model;
-using ScrumMasters.Webshop.Security.Services;
 
-namespace ScrumMasters.Webshop.Security
+
+using LegoCollectors.Security.Model;
+using LegoCollectors.Security.Services;
+
+namespace LegoCollectors.Security
 {
     public class AuthDbSeeder : IAuthDbSeeder
     {
         private readonly AuthDbContext authDbContext;
 
-        public AuthDbSeeder(
-            AuthDbContext ctx)
+        public AuthDbSeeder(AuthDbContext ctx)
         {
             authDbContext = ctx;
         }

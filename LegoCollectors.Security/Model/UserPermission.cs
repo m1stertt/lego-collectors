@@ -1,4 +1,4 @@
-namespace ScrumMasters.Webshop.Security.Model
+namespace LegoCollectors.Security.Model
 {
     public class UserPermission
     {

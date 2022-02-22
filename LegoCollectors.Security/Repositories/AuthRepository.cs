@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using LegoCollectors.Security.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ScrumMasters.Webshop.Security.Model;
 
-namespace ScrumMasters.Webshop.Security
+namespace LegoCollectors.Security
 {
     public class AuthRepository : IAuthRepository
     {

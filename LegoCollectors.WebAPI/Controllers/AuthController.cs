@@ -3,8 +3,8 @@ using System.Linq;
 using lego_collectors.Dtos.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ScrumMasters.Webshop.Security;
-using ScrumMasters.Webshop.Security.Model;
+using LegoCollectors.Security;
+using LegoCollectors.Security.Model;
 
 namespace lego_collectors.Controllers
 {
