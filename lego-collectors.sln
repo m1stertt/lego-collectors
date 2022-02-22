@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lego-collectors", "lego-collectors\lego-collectors.csproj", "{21ABCF97-000E-4B37-B3D5-D1940321C90B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.WebAPI", "LegoCollectors.WebAPI\LegoCollectors.WebAPI.csproj", "{21ABCF97-000E-4B37-B3D5-D1940321C90B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.DataAccess", "LegoCollectors.DataAccess\LegoCollectors.DataAccess.csproj", "{9D03FB23-D84E-4D22-8D9D-C1F682AE5A9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.Security", "LegoCollectors.Security\LegoCollectors.Security.csproj", "{9AA59CD1-35CD-4DA8-A2AF-7D9F3463777D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.Core", "LegoCollectors.Core\LegoCollectors.Core.csproj", "{F0138D87-EC97-482B-9F04-6B23C316993B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.Domain", "LegoCollectors.Domain\LegoCollectors.Domain.csproj", "{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{21ABCF97-000E-4B37-B3D5-D1940321C90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21ABCF97-000E-4B37-B3D5-D1940321C90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21ABCF97-000E-4B37-B3D5-D1940321C90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D03FB23-D84E-4D22-8D9D-C1F682AE5A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D03FB23-D84E-4D22-8D9D-C1F682AE5A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D03FB23-D84E-4D22-8D9D-C1F682AE5A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D03FB23-D84E-4D22-8D9D-C1F682AE5A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA59CD1-35CD-4DA8-A2AF-7D9F3463777D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA59CD1-35CD-4DA8-A2AF-7D9F3463777D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA59CD1-35CD-4DA8-A2AF-7D9F3463777D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA59CD1-35CD-4DA8-A2AF-7D9F3463777D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0138D87-EC97-482B-9F04-6B23C316993B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0138D87-EC97-482B-9F04-6B23C316993B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0138D87-EC97-482B-9F04-6B23C316993B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0138D87-EC97-482B-9F04-6B23C316993B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
