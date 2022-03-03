@@ -5,7 +5,7 @@ pipeline{
     }
     stages{
         stage("Build"){
-            step{
+            steps{
                 sh "dotnet build lego-collectors.sln"
             }
         }
