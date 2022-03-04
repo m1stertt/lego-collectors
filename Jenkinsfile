@@ -6,6 +6,7 @@ pipeline{
     }
                 
     stages{
+        parallel {
         stage("Build API"){
             steps{
                 sh "dotnet build lego-collectors.sln"
@@ -20,6 +21,7 @@ pipeline{
                     }
                 }
             }
+        }
        
     }
   
