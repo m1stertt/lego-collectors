@@ -11,6 +11,7 @@ pipeline{
         stage("Build"){
             steps{
                 sh "dotnet build lego-collectors.sln"
+                sh "npm install --prefix ./LegoCollectors.WebAPI/ClientApp"
             }
         }
         
