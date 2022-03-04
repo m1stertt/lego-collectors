@@ -14,9 +14,12 @@ pipeline{
         }
          stage('Tests') {
             steps {
-                dir('LegoCollectors.WebAPI/ClientApp') {
-                    sh "npm install"
+                dir('LegoCollectors.WebAPI') {
+                    dir('ClientApp'){
+                        sh "npm install"
                     sh "npm build"
+                        }
+                   
     }
         }
     }
