@@ -14,7 +14,7 @@ pipeline{
         
          stage('Build Frontend') {
              steps {
-                 dir('/LegoCollectors.WebAPI/ClientApp'){
+                 dir('LegoCollectors.WebAPI/ClientApp'){
                     sh "npm install"
                     sh "npm run build"
                     }
