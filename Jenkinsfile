@@ -6,17 +6,18 @@ pipeline{
     }
                 
     stages{
-        stage("Build"){
+        stage("Build API"){
             steps{
                 sh "dotnet build lego-collectors.sln"
-                sh "npm install --prefix ./LegoCollectors.WebAPI/ClientApp"
             }
         }
         
-         stage('Tests') {
+         stage('Build Frontend') {
              steps {
-                sh "npm install"
-                sh "npm build"
+                 dir('/LegoCollectors.WebAPI/ClientApp'){
+                    sh "npm install"
+                    sh "npm run build"
+                    }
                 }
             }
        
