@@ -12,13 +12,13 @@ pipeline{
                 sh "dotnet build lego-collectors.sln"
             }
         }
-        dir('LegoCollectors.WebAPI'){
+        
             stage('Tests') {
                 steps {
                     sh "npm install"
                     sh "npm build"
                 }
             }
-        }
+        
     }
 }
