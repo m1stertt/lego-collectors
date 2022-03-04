@@ -36,7 +36,7 @@ namespace lego_collectors
         {
             services.AddControllers();
             services.AddSwaggerGen(options =>
-            {
+             {
                 options.SwaggerDoc("v1", new OpenApiInfo {Title = "lego-collectors", Version = "v1"});
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
