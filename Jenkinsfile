@@ -4,7 +4,7 @@ pipeline{
     tools {nodejs "node"}
     
     triggers{
-        pollSCM(*/15 * * * *)
+        pollSCM('*/15 * * * *')
     }
                 
     stages{
