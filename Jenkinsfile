@@ -6,23 +6,25 @@ pipeline{
     }
                 
     stages{
-        parallel {
-        stage("Build API"){
-            steps{
-                sh "dotnet build lego-collectors.sln"
+        stage("Build project") {
+            parallel {
+            stage("Build API"){
+                steps{
+                    sh "dotnet build lego-collectors.sln"
+                }
             }
-        }
-        
-         stage('Build Frontend') {
-             steps {
-                 dir('LegoCollectors.WebAPI/ClientApp'){
-                    sh "npm install"
-                    sh "npm run build"
+
+             stage('Build Frontend') {
+                 steps {
+                     dir('LegoCollectors.WebAPI/ClientApp'){
+                        sh "npm install"
+                        sh "npm run build"
+                        }
                     }
                 }
             }
+
         }
-       
     }
   
 }
