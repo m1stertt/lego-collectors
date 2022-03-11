@@ -12,6 +12,7 @@ pipeline{
                 steps{
                     sh "dotnet build lego-collectors.sln"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
+                    sh 'mvn clean cobertura:cobertura'
                 }
             }
 
