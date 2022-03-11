@@ -11,7 +11,6 @@ pipeline{
             stage("Build API"){
                 steps{
                     sh "dotnet build lego-collectors.sln"
-                    sh "dotnet test --collect:'XPlat Code Coverage'"
                 }
             }
 
@@ -25,6 +24,11 @@ pipeline{
                 }
             }
 
+        }
+        stage("Unit test"){
+            steps{
+                sh "dotnet test --collect:'XPlat Code Coverage'"
+            }
         }
     }
     post {
