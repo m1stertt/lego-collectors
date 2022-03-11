@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.Core", "Lego
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.Domain", "LegoCollectors.Domain\LegoCollectors.Domain.csproj", "{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoCollectors.DataAccess.Test", "LegoCollectors.DataAccess.Test\LegoCollectors.DataAccess.Test.csproj", "{CD6FED53-C67C-4AF5-B104-3EF3F9FEF21C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC20962-EDB6-44EE-9B34-B8F9EBC2EE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD6FED53-C67C-4AF5-B104-3EF3F9FEF21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD6FED53-C67C-4AF5-B104-3EF3F9FEF21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD6FED53-C67C-4AF5-B104-3EF3F9FEF21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD6FED53-C67C-4AF5-B104-3EF3F9FEF21C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
