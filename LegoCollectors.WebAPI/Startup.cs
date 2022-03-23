@@ -153,7 +153,7 @@ namespace lego_collectors
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseVueCli(npmScript: "serve");
+                    spa.UseVueCli(npmScript: "serve",port:5000);
                 }
 
             });
