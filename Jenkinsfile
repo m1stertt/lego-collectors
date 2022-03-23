@@ -8,18 +8,26 @@ pipeline{
     stages{
         stage("Build project") {
             parallel {
-            stage("Build API"){
-                steps{
-                    sh "dotnet build lego-collectors.sln"
-                }
-            }
-
-             stage('Build Frontend') {
-                 steps {
-                     dir('LegoCollectors.WebAPI/ClientApp'){
-                        sh "npm install"
-                        sh "npm run build"
+                stage("Build API"){
+                    when {
+                        anyOf {
+                            changeset "API/**"
+                            changeset "BLL/**"
+                            changeset "DAL/**"
                         }
+                    }
+                    steps{
+                        sh "dotnet build --configuration Release"
+                        sh "docker-compose build api"
+                    }
+                }
+
+                stage('Build Frontend') {
+                    when {
+                        changeset "Web/**"
+                    }
+                    steps {
+                     sh "docker-compose build web"
                     }
                 }
             }
@@ -28,6 +36,21 @@ pipeline{
         stage("Unit test"){
             steps{
                 sh "dotnet test --collect:'XPlat Code Coverage'"
+            }
+        }
+        stage("Clean containers") {
+            steps {
+                script {
+                    try {
+                        sh "docker-compose down"
+                    }
+                    finally { }
+                }
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh "docker-compose up -d"
             }
         }
     }
