@@ -6,7 +6,7 @@ services:
       context: "LegoCollectors.WebAPI/ClientApp"
     container_name: "lego-collectors-web-container"
     ports:
-      - "8090:80"
+      - "80:80"
   api:
     build:
       context: LegoCollectors.WebAPI
