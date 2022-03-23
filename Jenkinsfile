@@ -9,13 +9,6 @@ pipeline{
         stage("Build project") {
             parallel {
                 stage("Build API"){
-                    when {
-                        anyOf {
-                            changeset "API/**"
-                            changeset "BLL/**"
-                            changeset "DAL/**"
-                        }
-                    }
                     steps{
                         sh "dotnet build --configuration Release"
                         sh "docker-compose build api"
@@ -23,9 +16,6 @@ pipeline{
                 }
 
                 stage('Build Frontend') {
-                    when {
-                        changeset "Web/**"
-                    }
                     steps {
                      sh "docker-compose build web"
                     }
