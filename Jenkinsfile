@@ -16,9 +16,6 @@ pipeline{
                 }
 
                 stage('Build Frontend') {
-                    when {
-                        changeset "LegoCollectors.WebApi/ClientApp/**"
-                    }
                     steps {
                      sh "docker-compose build web"
                     }
