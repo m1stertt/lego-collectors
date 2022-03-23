@@ -3,7 +3,7 @@ version: "3.9"
 services:
   api:
     build:
-      context: "LegoCollectors.WebApi"
+      context: .LegoCollectors.WebApi
     container_name: "lego-collectors-api-container"
     ports:
       - "8091:80"
