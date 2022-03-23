@@ -12,4 +12,4 @@ services:
       context: LegoCollectors.WebAPI
     container_name: "lego-collectors-api-container"
     ports:
-      - "8091:80"
+      - "5000:80"
