@@ -3,7 +3,7 @@ version: "3.9"
 services:
   web:
     build:
-      context: "LegoCollectors.WebAPI/ClientApp"
+      context: "Vue"
     container_name: "lego-collectors-web-container"
     ports:
       - "80:80"

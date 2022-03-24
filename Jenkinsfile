@@ -9,15 +9,28 @@ pipeline{
         stage("Build project") {
             parallel {
                 stage("Build API"){
+                    when {
+                        anyOf {
+                            changeset "LegoCollectors.Core/**"
+                            changeset "LegoCollectors.DataAccess/**"
+                            changeset "LegoCollectors.Domain/**"
+                            changeset "LegoCollectors.Security/**"
+                            changeset "LegoCollectors.WebApi/**"
+                            changeset "LegoCollectors.DataAccess.Test/**"
+                        }
+                    }
                     steps{
                         sh "dotnet build --configuration Release"
-                        sh "docker-compose build api"
+                        sh "docker-compose --env-file config/Test.env build api"
                     }
                 }
 
                 stage('Build Frontend') {
+                    when {
+                        changeset "Vue/**"
+                    }
                     steps {
-                        sh "docker-compose build web"
+                        sh "docker-compose --env-file config/Test.env build web"
                     }
                 }
             }
@@ -32,7 +45,7 @@ pipeline{
             steps {
                 script {
                     try {
-                        sh "docker-compose down"
+                        sh "docker-compose --env-file config/Test.env down"
                     }
                     finally { }
                 }
@@ -40,7 +53,13 @@ pipeline{
         }
         stage("Deploy") {
             steps {
-                sh "docker-compose up -d"
+                sh "docker-compose --env-file config/Test.env up -d"
+            }
+        }
+
+        stage("Push to registry") {
+            steps {
+                sh "docker-compose --env-file config/Test.env push"
             }
         }
     }
