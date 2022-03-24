@@ -9,9 +9,9 @@ services:
       - "${WEB_PORT}:80"
     environment:
       - API_URL=${API_URL}
-api:
-  build:
-      context: "LegoCollectors.WebAPI"
+  api:
+    build:
+        context: "LegoCollectors.WebAPI"
     image: "localhost:7002/api:${IMAGE_TAG}"
     container_name: "${API_CONT_NAME}"
     ports:
@@ -30,6 +30,6 @@ api:
       - "${DB_PORT}:1433"
     volumes:
       - weatherData:/var/opt/mssql:rw
-      
+
 volumes:
   weatherData:
