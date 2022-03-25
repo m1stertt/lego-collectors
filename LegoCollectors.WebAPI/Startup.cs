@@ -110,6 +110,7 @@ namespace lego_collectors
                     .WithExposedHeaders("X-Pagination");
                 });
             });
+            
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "../Vue";
@@ -142,7 +143,6 @@ namespace lego_collectors
                 endpoints.MapControllers();
             });
             //app.UseHttpsRedirection();
-
             app.UseSpaStaticFiles();
             app.UseSpa(spa =>
             {
@@ -153,7 +153,7 @@ namespace lego_collectors
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseVueCli(npmScript: "serve",port:5000);
+                    spa.UseVueCli(npmScript: "serve");
                 }
 
             });
