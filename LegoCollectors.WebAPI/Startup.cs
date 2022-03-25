@@ -104,7 +104,7 @@ namespace lego_collectors
                 options.AddPolicy("Production-cors", prodPolicy =>
                 {
                     prodPolicy
-                        .WithOrigins("http://161.97.99.214")
+                        .AllowAnyOrigin() //@todo no good I dont think maybe fix later
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination");
