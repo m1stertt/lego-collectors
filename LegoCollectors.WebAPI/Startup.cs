@@ -147,7 +147,7 @@ namespace lego_collectors
             app.UseSpa(spa =>
             {
                 if (env.IsDevelopment())
-                    spa.Options.SourcePath = "ClientApp/";
+                    spa.Options.SourcePath = "../Vue";
                 else
                     spa.Options.SourcePath = "dist";
 

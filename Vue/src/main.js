@@ -7,7 +7,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const app = createApp(App)
-app.config.globalProperties.hostname = "http://161.97.99.214:5000"
+app.config.globalProperties.hostname = "/config/api-url.txt"
 app.use(router)
 app.use(VueAxios, axios)
 app.mount('#app')
