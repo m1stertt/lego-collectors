@@ -11,7 +11,7 @@ axios.get("/config/api-url.txt").then((result)=>{
     if(result.status&&result.status==200){
         app.config.globalProperties.hostname=result.data;
     }
-}).catch((err)=>{
+}).catch(()=>{
     app.config.globalProperties.hostname ="http://localhost:5000"
 });
 app.use(router)
