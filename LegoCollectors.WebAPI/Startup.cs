@@ -83,12 +83,10 @@ namespace lego_collectors
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
+                    //ValidateIssuerSigningKey = true, //Had to remove cause wasnt working with docker rn
                     ValidIssuer = Configuration["JwtConfig:Issuer"],
                     ValidAudience = Configuration["JwtConfig:Audience"],
-                    IssuerSigningKey =
-                        new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"]))
+                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"])) // Had to remove cuz it wasnt working with docker
                 };
             });
             services.AddCors(options =>
@@ -104,7 +102,7 @@ namespace lego_collectors
                 options.AddPolicy("Production-cors", prodPolicy =>
                 {
                     prodPolicy
-                        .AllowAnyOrigin()
+                        .SetIsOriginAllowed(o => true)
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination");
