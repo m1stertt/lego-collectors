@@ -76,7 +76,7 @@ namespace lego_collectors
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
+            });/*.AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -88,7 +88,7 @@ namespace lego_collectors
                     ValidAudience = Configuration["JwtConfig:Audience"],
                     //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"])) // Had to remove cuz it wasnt working with docker
                 };
-            });
+            });*/
             services.AddCors(options =>
             {
                 options.AddPolicy("Development-cors", devPolicy =>
