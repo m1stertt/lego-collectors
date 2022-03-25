@@ -104,7 +104,7 @@ namespace lego_collectors
                 options.AddPolicy("Production-cors", prodPolicy =>
                 {
                     prodPolicy
-                        .AllowAnyOrigin() //@todo no good I dont think maybe fix later
+                        .WithOrigins("*") //@todo no good I dont think maybe fix later
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination");
@@ -112,7 +112,7 @@ namespace lego_collectors
             });
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp";
+                configuration.RootPath = "../Vue";
             });
         }
 
