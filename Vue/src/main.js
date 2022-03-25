@@ -7,7 +7,13 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const app = createApp(App)
-app.config.globalProperties.hostname = "/config/api-url.txt"
+axios.get("/config/api-url.txt").then((result)=>{
+    if(result.status&&result.status==200){
+        app.config.globalProperties.hostname=result.data;
+    }
+}).catch((err)=>{
+    app.config.globalProperties.hostname ="http://localhost:5000"
+});
 app.use(router)
 app.use(VueAxios, axios)
 app.mount('#app')
