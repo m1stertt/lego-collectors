@@ -141,7 +141,7 @@ namespace lego_collectors
             {
                 endpoints.MapControllers();
             });
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseSpaStaticFiles();
             app.UseSpa(spa =>
