@@ -76,19 +76,19 @@ namespace lego_collectors
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            });/*.AddJwtBearer(options =>
+            }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
-                    //ValidateIssuerSigningKey = true, //Had to remove cause wasnt working with docker rn
+                    ValidateIssuerSigningKey = true,
                     ValidIssuer = Configuration["JwtConfig:Issuer"],
                     ValidAudience = Configuration["JwtConfig:Audience"],
-                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"])) // Had to remove cuz it wasnt working with docker
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"]))
                 };
-            });*/
+            });
             services.AddCors(options =>
             {
                 options.AddPolicy("Development-cors", devPolicy =>
