@@ -1,4 +1,6 @@
-﻿namespace LegoCollectors.DataAccess.Entities
+﻿using System.Collections.Generic;
+
+namespace LegoCollectors.DataAccess.Entities
 {
     public class LegoEntity
     {
@@ -7,5 +9,9 @@
         public string Title { get; set; }
 
         public string Description { get; set; }
+        
+        //public string Image { get; set; }
+        
+        public List<LegoStockEntity> Stocks { get; set; }
     }
 }

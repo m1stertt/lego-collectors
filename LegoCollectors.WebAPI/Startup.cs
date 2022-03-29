@@ -77,6 +77,7 @@ namespace lego_collectors
             services.AddScoped<ILegoService, LegoService>();
             services.AddScoped<ILegoStockRepository, LegoStockRepository>();
             services.AddScoped<ILegoStockService, LegoStockService>();
+            services.AddScoped<IMainDbSeeder, MainDbSeeder>();
 
             // Dependency Injection for security.
             services.AddScoped<IAuthService, AuthService>();
@@ -128,7 +129,7 @@ namespace lego_collectors
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAuthDbSeeder authDbSeeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAuthDbSeeder authDbSeeder,IMainDbSeeder mainDbSeeder)
         {
             if (env.IsDevelopment())
             {
@@ -137,10 +138,12 @@ namespace lego_collectors
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LegoCollectors v1"));
                 app.UseCors("Development-cors");
                 authDbSeeder.SeedDevelopment();
+                mainDbSeeder.SeedDevelopment();
             }
             else
             {
                 authDbSeeder.SeedProduction();
+                mainDbSeeder.SeedProduction();
                 app.UseCors("Production-cors");
             }
 

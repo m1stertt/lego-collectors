@@ -6,6 +6,7 @@ namespace LegoCollectors.Core.Models
     {
         public int Id { get; set; }
         public int Amount { get; set; }
+        public Lego Lego { get; set; }
         public LoginUser User { get; set; }
     }
 }

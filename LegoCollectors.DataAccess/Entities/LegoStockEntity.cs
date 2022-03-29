@@ -6,6 +6,7 @@ namespace LegoCollectors.DataAccess.Entities
     {
         public int Id { get; set; }
         public int Amount { get; set; }
+        public LegoEntity Lego { get; set; }
         public LoginUser User { get; set; }
     }
 }
