@@ -5,6 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
 using lego_collectors.Middleware;
+using LegoCollectors.Core.IServices;
+using LegoCollectors.DataAccess.Repositories;
+using LegoCollectors.Domain.IRepositories;
+using LegoCollectors.Domain.Service;
 using LegoCollectors.Security;
 using LegoCollectors.Security.Model;
 using LegoCollectors.Security.Services;
@@ -65,6 +69,9 @@ namespace lego_collectors
             });
             // Dependency Injection.
             services.AddDbContext<AuthDbContext>(opt => { opt.UseSqlite("Data Source=auth.db"); });
+
+            services.AddScoped<ILegoRepository, LegoRepository>();
+            services.AddScoped<ILegoService, LegoService>();
 
             // Dependency Injection for security.
             services.AddScoped<IAuthService, AuthService>();

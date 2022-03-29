@@ -1,6 +1,7 @@
+using LegoCollectors.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ScrumMasters.Webshop.DataAccess
+namespace LegoCollectors.DataAccess
 {
     public class MainDbContext : DbContext
     {
@@ -12,5 +13,7 @@ namespace ScrumMasters.Webshop.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
+        
+        public virtual DbSet<LegoEntity> Legos { get; set; }
     }
 }

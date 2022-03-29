@@ -1,4 +1,4 @@
-namespace ScrumMasters.Webshop.DataAccess
+namespace LegoCollectors.DataAccess
 {
     public interface IMainDbSeeder
     {

@@ -28,12 +28,11 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <Content Include="appsettings.json">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LegoCollectors.DataAccess\LegoCollectors.DataAccess.csproj" />
+    <ProjectReference Include="..\LegoCollectors.Domain\LegoCollectors.Domain.csproj" />
     <ProjectReference Include="..\LegoCollectors.Security\LegoCollectors.Security.csproj" />
   </ItemGroup>
 

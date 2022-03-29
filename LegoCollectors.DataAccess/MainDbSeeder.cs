@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace ScrumMasters.Webshop.DataAccess
+namespace LegoCollectors.DataAccess
 {
     public class MainDbSeeder : IMainDbSeeder
     {
