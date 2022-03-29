@@ -2,12 +2,11 @@
 using System.IO;
 using LegoCollectors.Core.IServices;
 using LegoCollectors.Core.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lego_collectors.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class LegoController: ControllerBase
     {

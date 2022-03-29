@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System.Text;
 using lego_collectors.Middleware;
 using LegoCollectors.Core.IServices;
+using LegoCollectors.DataAccess;
 using LegoCollectors.DataAccess.Repositories;
 using LegoCollectors.Domain.IRepositories;
 using LegoCollectors.Domain.Service;
@@ -69,9 +71,12 @@ namespace lego_collectors
             });
             // Dependency Injection.
             services.AddDbContext<AuthDbContext>(opt => { opt.UseSqlite("Data Source=auth.db"); });
+            services.AddDbContext<MainDbContext>(opt => { opt.UseSqlite("Data Source=main.db").LogTo(Console.WriteLine); });
 
             services.AddScoped<ILegoRepository, LegoRepository>();
             services.AddScoped<ILegoService, LegoService>();
+            services.AddScoped<ILegoStockRepository, LegoStockRepository>();
+            services.AddScoped<ILegoStockService, LegoStockService>();
 
             // Dependency Injection for security.
             services.AddScoped<IAuthService, AuthService>();

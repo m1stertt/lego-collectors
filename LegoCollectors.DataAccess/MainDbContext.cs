@@ -15,5 +15,6 @@ namespace LegoCollectors.DataAccess
         }
         
         public virtual DbSet<LegoEntity> Legos { get; set; }
+        public virtual DbSet<LegoStockEntity> LegoStock { get; set; }
     }
 }
