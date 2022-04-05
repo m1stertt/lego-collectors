@@ -11,18 +11,22 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const app = createApp(App)
+app.use(createPinia());
+
+
 axios.get("/config/api-url.txt").then((result)=>{
     if(result.status&&result.status==200){
         app.config.globalProperties.hostname=result.data;
     }
 }).catch(()=>{});
 app.config.globalProperties.hostname ="http://localhost:5000/"
+
+
 app.use(PrimeVue);
 app.use(router)
 app.use(VueAxios, axios);
 
 app.component("Menubar", Menubar);
 app.component("InputText", InputText);
-app.use(createPinia());
 
 app.mount('#app')

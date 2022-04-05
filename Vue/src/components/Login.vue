@@ -23,8 +23,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 import Swal from 'sweetalert2';
+import UserStore from "@/stores/userStore";
+const userStore = UserStore();
 
 export default {
   data(){
@@ -41,6 +43,18 @@ export default {
     },
     login(){
       if(this.checkValidation()){
+        userStore.loginUser(this.user.email,this.user.password).then(response => {
+          if(response.status){
+            localStorage.setItem('token', JSON.stringify(response.data.token));
+            response.data.token = "";
+            localStorage.setItem('user', JSON.stringify(response.data));
+            this.$router.push({name:"Home"});
+          }
+        }).catch(error => {
+          if (error.response) {
+            Swal.fire(error.response.data);
+          }
+        });/*
         axios.post(this.hostname + "api/auth/Login",{
           email: this.user.email,
           password: this.user.password,
@@ -57,7 +71,7 @@ export default {
               if (error.response) {
                 Swal.fire(error.response.data);
               }
-            });
+            });*/
       }
     },
     checkValidation(){

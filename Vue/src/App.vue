@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { logout } from '@/composables/logout'
+import { logout } from '../src/composables/logout'
 export default {
   name: 'App',
   setup(){
