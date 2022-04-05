@@ -9,16 +9,6 @@ pipeline{
         stage("Build project") {
             parallel {
                 stage("Build API"){
-                    when {
-                        anyOf {
-                            changeset "LegoCollectors.Core/**"
-                            changeset "LegoCollectors.DataAccess/**"
-                            changeset "LegoCollectors.Domain/**"
-                            changeset "LegoCollectors.Security/**"
-                            changeset "LegoCollectors.WebApi/**"
-                            changeset "LegoCollectors.DataAccess.Test/**"
-                        }
-                    }
                     steps{
                         sh "dotnet build --configuration Release"
                         sh "docker-compose --env-file config/Test.env build api"
@@ -26,9 +16,6 @@ pipeline{
                 }
 
                 stage('Build Frontend') {
-                    when {
-                        changeset "Vue/**"
-                    }
                     steps {
                         sh "docker-compose --env-file config/Test.env build web"
                     }
