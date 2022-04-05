@@ -63,6 +63,7 @@ namespace lego_collectors
                     }
                 });
             });
+            
             // Dependency Injection.
             services.AddDbContext<AuthDbContext>(opt => { opt.UseSqlite(Configuration["DbPath"]); });
 
