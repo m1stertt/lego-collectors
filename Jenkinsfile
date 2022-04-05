@@ -6,6 +6,11 @@ pipeline{
     }
                 
     stages{
+        stage("Test"){
+            steps{
+                cleanWs()
+            }
+        }
         stage("Build project") {
             parallel {
                 stage("Build API"){
