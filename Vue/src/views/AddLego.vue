@@ -1,9 +1,11 @@
 <template>
-  <span class="p-input-icon-left">
-    <i class="pi pi-search" />
-    <InputText type="text" v-model="value1" v-on:change="change" placeholder="Search for lego piece to add" />
-  </span>
   <div class="surface-card p-4 shadow-2 border-round">
+    <div class="text-3xl font-medium text-900 mb-3">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search" />
+        <InputText type="text" v-model="value1" v-on:change="change" placeholder="Search for lego piece to add" />
+      </span>
+    </div>
     <DataTable :value="results" responsiveLayout="scroll">
       <template #header>
         <div class="table-header">

@@ -1,44 +1,89 @@
-<script setup lang="ts">
-import MenuComponent from "./component/MenuComponent.vue";
+<script lang="ts">
+function changeTheme(theme: string) {
+  let themeElement = document.getElementById("theme-link");
+  if (themeElement == null) return;
+  themeElement.setAttribute(
+    "href",
+    "https://unpkg.com/primevue/resources/themes/" + theme.code + "/theme.css"
+  );
+  localStorage.setItem("theme", JSON.stringify(theme));
+}
+export default {
+  data() {
+    return {
+      selectedTheme: null,
+      themes: [
+        { name: "Lara light indigo", code: "lara-light-indigo" },
+        { name: "Fluent", code: "fluent-light" },
+        { name: "Bootstrap", code: "bootstrap4-light-blue"},
+        { name: "MD", code: "md-light-indigo" },
+        { name: "MDC", code: "mdc-light-indigo" },
+        { name: "Rhea", code: "rhea" },
+        { name: "Tailwind", code: "tailwind-light" },
+      ],
+    };
+  },
+  created() {
+    const theme = JSON.parse(localStorage.getItem("theme"));
+    console.log(theme);
+    if (theme != null) {
+      this.selectedTheme=theme;
+    }
+  },
+  watch: {
+    selectedTheme: {
+      handler(oldVal) {
+        changeTheme(oldVal);
+      },
+      deep: true,
+    },
+  },
+};
 </script>
 
 <template>
-<MenuComponent></MenuComponent>
-<div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1">
-  <RouterView />
-</div>
-<div class="bl">
-</div>
-<div class="br">
-</div>
+  <MenuComponent></MenuComponent>
+  <Dropdown
+    v-model="selectedTheme"
+    :options="themes"
+    optionLabel="name"
+    placeholder="Themes"
+    style="width:200px;margin-left:10px;"
+  />
+  <div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1" style="margin-top:30px;">
+    <RouterView />
+  </div>
+  <div class="bl"></div>
+  <div class="br"></div>
 </template>
-
 <style>
-body{
-  padding:0px;
-  margin:0px;
-  font-family: 'Quicksand', sans-serif;
-  background:#f1f2f6;
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Quicksand", sans-serif;
+  background: #f1f2f6;
 }
-.bl{
-  position:fixed;
-  bottom:0;
-  left:0;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-bl.png") no-repeat;
+.bl {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-bl.png")
+    no-repeat;
   background-size: 200px 200px;
-  width:200px;
-  height:200px;
-  z-index:-1;
+  width: 200px;
+  height: 200px;
+  z-index: -1;
 }
 
-.br{
-  position:fixed;
-  bottom:0;
-  right:0;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-br.png") no-repeat;
+.br {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-br.png")
+    no-repeat;
   background-size: 200px 200px;
-  width:200px;
-  height:200px;
-  z-index:-1;
+  width: 200px;
+  height: 200px;
+  z-index: -1;
 }
 </style>

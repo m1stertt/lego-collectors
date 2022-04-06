@@ -7,10 +7,12 @@ import PrimeVue from 'primevue/config';
 import Menubar from "primevue/menubar";
 import InputText from "primevue/inputtext"
 import Button from "primevue/button";
+import MenuComponent from "./component/MenuComponent.vue";
+import Dropdown from "primevue/dropdown";
 
 const app = createApp(App)
 app.use(PrimeVue);
-app.use(router)
+app.use(router);
 app.use(createPinia());
 
 axios.interceptors.request.use(request => {
@@ -33,5 +35,7 @@ axios.defaults.baseURL="http://localhost:5000/";
 app.component("Menubar", Menubar);
 app.component("InputText", InputText);
 app.component("Button",Button);
+app.component("MenuComponent",MenuComponent);
+app.component("Dropdown",Dropdown);
 
 app.mount('#app')

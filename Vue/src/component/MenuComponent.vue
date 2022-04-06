@@ -22,7 +22,6 @@ const items = [
           <router-link to="/"><img src="https://www.pngall.com/wp-content/uploads/5/Lego-Toy-PNG-High-Quality-Image.png" alt="Image" height="50" class="mr-2"></router-link>
       </template>
       <template #end>
-          <span style="height:auto; line-height:50px;">{{ userStore.email }}</span>
           <Button icon="pi pi-sign-out" class="p-button-text" v-on:click="log()" />
       </template>
     </Menubar>
