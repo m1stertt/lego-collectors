@@ -1,4 +1,4 @@
-import { Lego } from "@/models/Lego";
+import type { Lego } from "@/models/Lego";
 import { defineStore } from "pinia";
 import { CollectionService } from "../services/collection.service";
 
