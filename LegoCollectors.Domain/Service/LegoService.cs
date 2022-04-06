@@ -14,9 +14,9 @@ namespace LegoCollectors.Domain.Service
         {
             _legoRepository = legoRepository ?? throw new InvalidDataException("LegoRepository Cannot Be Null");
         }
-        public List<Lego> GetLegos()
+        public List<Lego> GetLegos(int ownerId)
         {
-            return _legoRepository.FindAll();
+            return _legoRepository.FindAll(ownerId);
         }
 
         public Lego Create(Lego lego)
@@ -24,7 +24,7 @@ namespace LegoCollectors.Domain.Service
             return _legoRepository.Create(lego);
         }
 
-        public Lego GetLegoById(int id)
+        public Lego? GetLegoById(int id)
         {
             return _legoRepository.FindById(id);
         }

@@ -16,25 +16,35 @@ namespace LegoCollectors.DataAccess.Repositories
             _context = ctx ?? throw new InvalidDataException("Lego Repository Must have a DBContext");
         }
 
-        public List<Lego> FindAll()
+        public List<Lego> FindAll(int ownerId)
         {
             return _context.Legos.Select(pe => new Lego
                 {
                     Id = pe.Id,
-                    Title=pe.Title,
-                    Description = pe.Description
-                })
+                    Name=pe.Name,
+                    Year=pe.Year,
+                    Image=pe.Image,
+                    Number_Parts = pe.Number_Parts,
+                    Amount = pe.Amount,
+                    Set_Number = pe.Set_Number,
+                    OwnerId = pe.OwnerId
+                }).Where(lego=>lego.OwnerId==ownerId)
                 .ToList();
         }
 
-        public Lego FindById(int id)
+        public Lego? FindById(int id)
         {
             if (id == 0) return null;
             return _context.Legos.Select(pe => new Lego
             {
                 Id = pe.Id,
-                Title=pe.Title,
-                Description = pe.Description
+                Name=pe.Name,
+                Year=pe.Year,
+                Image=pe.Image,
+                Number_Parts = pe.Number_Parts,
+                Amount = pe.Amount,
+                Set_Number = pe.Set_Number,
+                OwnerId = pe.OwnerId
             }).FirstOrDefault(lego => lego.Id == id);
         }
 
@@ -43,14 +53,26 @@ namespace LegoCollectors.DataAccess.Repositories
             if (lego == null) return null;
             var entity = new LegoEntity()
             {
-                Title=lego.Title,
+                Name=lego.Name,
+                Year=lego.Year,
+                Image=lego.Image,
+                Number_Parts = lego.Number_Parts,
+                Amount = lego.Amount,
+                Set_Number = lego.Set_Number,
+                OwnerId = lego.OwnerId
             };
-            var savedEntity = _context.Legos.Add(entity).Entity;
+            var pe = _context.Legos.Add(entity).Entity;
             _context.SaveChanges();
             return new Lego()
             {
-                Id = lego.Id,
-                Title=lego.Title,
+                Id = pe.Id,
+                Name=pe.Name,
+                Year=pe.Year,
+                Image=pe.Image,
+                Number_Parts = pe.Number_Parts,
+                Amount = pe.Amount,
+                Set_Number = pe.Set_Number,
+                OwnerId = pe.OwnerId
             };
         }
 
@@ -60,25 +82,43 @@ namespace LegoCollectors.DataAccess.Repositories
             var pe = _context.Update(new LegoEntity
             {
                 Id = lego.Id,
-                Title = lego.Title
+                Name=lego.Name,
+                Year=lego.Year,
+                Image=lego.Image,
+                Number_Parts = lego.Number_Parts,
+                Amount = lego.Amount,
+                Set_Number = lego.Set_Number,
+                OwnerId = lego.OwnerId
             }).Entity;
             _context.SaveChanges();
-            return new Lego
+            return new Lego()
             {
                 Id = pe.Id,
-                Title = pe.Title
+                Name=pe.Name,
+                Year=pe.Year,
+                Image=pe.Image,
+                Number_Parts = pe.Number_Parts,
+                Amount = pe.Amount,
+                Set_Number = pe.Set_Number,
+                OwnerId = pe.OwnerId
             };
         }
 
         public Lego DeleteById(int id)
         {
             if (id == 0) return null;
-            var savedEntity = _context.Legos.Remove(new LegoEntity() {Id = id}).Entity;
+            var pe = _context.Legos.Remove(new LegoEntity() {Id = id}).Entity;
             _context.SaveChanges();
             return new Lego()
             {
-                Id = savedEntity.Id,
-                Title = savedEntity.Title,
+                Id = pe.Id,
+                Name=pe.Name,
+                Year=pe.Year,
+                Image=pe.Image,
+                Number_Parts = pe.Number_Parts,
+                Amount = pe.Amount,
+                Set_Number = pe.Set_Number,
+                OwnerId = pe.OwnerId
             };
         }
     }

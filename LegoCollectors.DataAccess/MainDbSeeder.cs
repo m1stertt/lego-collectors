@@ -21,15 +21,15 @@ namespace LegoCollectors.DataAccess
                 mainContext.SaveChanges();
                 LegoEntity le1 = new LegoEntity
                 {
-                    Title = "Test piece 1", 
-                    Description= "This is a test description"
+                    Name = "Test Shuttle",
+                    Year = 1999,
+                    Number_Parts = 21,
+                    Image = "https://cdn.rebrickable.com/media/sets/3067-1/13934.jpg",
+                    OwnerId = 1,
+                    Amount=1,
+                    Set_Number = "3067-1"
                 };
-                LegoEntity le2 = new LegoEntity
-                {
-                    Title = "Test piece 2", 
-                    Description= "This is a test description"
-                };
-                mainContext.Legos.AddRange(le1,le2);
+                mainContext.Legos.Add(le1);
                 mainContext.SaveChanges();
         }
 

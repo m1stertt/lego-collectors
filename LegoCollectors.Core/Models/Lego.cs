@@ -5,13 +5,19 @@ namespace LegoCollectors.Core.Models
     public class Lego
     {
         public int Id { get; set; }
-        
-        public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Set_Number { get; set; }
+        
+        public string Name { get; set; }
+
+        public int Year { get; set; }
+        
+        public int Number_Parts { get; set; }
+        
+        public int OwnerId { get; set; }
         
         public string Image { get; set; }
         
-        public List<LegoStock> Stocks { get; set; }
+        public int Amount { get; set; }
     }
 }

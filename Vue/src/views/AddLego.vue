@@ -49,7 +49,6 @@ function select(set_num){
 
 function change(){
   console.log(rebrickableService.searchSets(value1.value).then(r=>{
-    console.log(r);
     results.value=r.results;
   }));
 }

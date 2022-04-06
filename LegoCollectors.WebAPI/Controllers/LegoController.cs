@@ -2,6 +2,7 @@
 using System.IO;
 using LegoCollectors.Core.IServices;
 using LegoCollectors.Core.Models;
+using LegoCollectors.Security.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lego_collectors.Controllers
@@ -21,7 +22,8 @@ namespace lego_collectors.Controllers
         [HttpGet]
         public ActionResult<List<Lego>> GetAll()
         {
-            return Ok(_legoService.GetLegos());
+            if (HttpContext.Items["LoginUser"] is not LoginUser user) return Unauthorized();
+            return Ok(_legoService.GetLegos(user.Id));
         }
         
         
