@@ -40,9 +40,7 @@ router.beforeEach((to, from, next) => {
     next('/login');
   } else {
     if(loggedIn){
-      console.log("hello world");
       if(!userStore.loggedInUser.id){
-        console.log("hello world1");
         userStore.getProfile().then(r=>{
           console.log(r);
         }).catch(r=>console.log(r));

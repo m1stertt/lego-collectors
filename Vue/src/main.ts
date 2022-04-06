@@ -17,7 +17,6 @@ axios.interceptors.request.use(request => {
     // add auth header with jwt if account is logged in and request is to the api url
     const isLoggedIn = localStorage.getItem('token');
     if (isLoggedIn&&request.headers) {
-        console.log("setting auth header");
         request.headers.Authorization = ` ${isLoggedIn}`;
     }
 
@@ -25,14 +24,11 @@ axios.interceptors.request.use(request => {
 });
 
 axios.get("/config/api-url.txt").then((result)=>{
-    alert("HELLO");
     if(result.status&&result.status==200){
-        app.config.globalProperties.hostname=result.data;
         axios.defaults.baseURL=result.data;
     }
 }).catch(()=>{});
 
-app.config.globalProperties.hostname ="http://localhost:5000/"
 axios.defaults.baseURL="http://localhost:5000/";
 
 
