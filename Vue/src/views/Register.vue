@@ -27,7 +27,6 @@
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { UserStore } from "@/stores/userStore";
 
 export default({
   data(){
@@ -43,13 +42,11 @@ export default({
   methods:{
     signup(){
       if(this.checkValidation()){
-        const userStore = UserStore();
         axios.post("api/auth/RegisterUser",{
             email: this.user.email,
             password: this.user.password,
           })
             .then(response => {
-              console.log(response);
               if (response.status) {
                 Swal.fire("Successfully registered")
                     .then(() => {
@@ -60,7 +57,6 @@ export default({
               }
             })
             .catch(error => {
-              console.log(error);
               if (error.response) {
                 Swal.fire(error.response.data);
               }
