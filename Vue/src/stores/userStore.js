@@ -1,13 +1,12 @@
 import { defineStore } from "pinia";
-import type { User } from "../models/User";
-import { UserService } from "../services/user.service";
+import { UserService } from "@/services/user.service";
 
-const userService: UserService = new UserService();
+const userService = new UserService();
 
 export const UserStore = defineStore({
   id: "userStore",
   state: () => ({
-    loggedInUser: { name: "" } as User,
+    loggedInUser: { name: "" },
   }),
   getters: {
     userName: (state) => {
@@ -16,7 +15,7 @@ export const UserStore = defineStore({
     },
   },
   actions: {
-    createUser(name: string, email: string, password: string) {
+    createUser(name, email, password) {
       return new Promise((resolve, reject) => {
         userService
           .createUser(name, email, password)
@@ -29,7 +28,7 @@ export const UserStore = defineStore({
           });
       });
     },
-    loginUser(email: string, password: string) {
+    loginUser(email, password) {
       return new Promise((resolve, reject) => {
         userService
           .loginUser(email, password)

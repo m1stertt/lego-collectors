@@ -25,7 +25,7 @@
 <script>
 //import axios from 'axios';
 import Swal from 'sweetalert2';
-import UserStore from "@/stores/userStore";
+import { UserStore } from "@/stores/userStore";
 const userStore = UserStore();
 
 export default {
