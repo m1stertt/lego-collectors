@@ -70,8 +70,8 @@ namespace lego_collectors
                 });
             });
             // Dependency Injection.
-            services.AddDbContext<AuthDbContext>(opt => { opt.UseSqlite("Data Source=auth.db"); });
-            services.AddDbContext<MainDbContext>(opt => { opt.UseSqlite("Data Source=main.db").LogTo(Console.WriteLine); });
+            services.AddDbContext<AuthDbContext>(opt => { opt.UseSqlite(Configuration["AuthDbPath"]); });
+            services.AddDbContext<MainDbContext>(opt => { opt.UseSqlite(Configuration["MainDbPath"]); });
 
             services.AddScoped<ILegoRepository, LegoRepository>();
             services.AddScoped<ILegoService, LegoService>();
