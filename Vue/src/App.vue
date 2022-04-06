@@ -1,70 +1,42 @@
-<template>
-  <div style="width:100%;height:40px;color:white;text-align:center;padding-top:5px;margin-bottom:50px;">
-    <!--Menu area-->
-  </div>
-  <div class="container">
-    <router-view></router-view>
-  </div>
-</template>
-
-<script>
-
-export default {
-  name: 'App',
-  setup(){
-
-  },
-  components: {
-
-  }
-}
-
+<script setup lang="ts">
+import MenuComponent from "./component/MenuComponent.vue";
 </script>
 
+<template>
+<MenuComponent></MenuComponent>
+<div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1">
+  <RouterView />
+</div>
+<div class="bl">
+</div>
+<div class="br">
+</div>
+</template>
+
 <style>
-button {
-  background-color: #0069D9;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+body{
+  padding:0px;
+  margin:0px;
+}
+.bl{
+  position:fixed;
+  bottom:0;
+  left:0;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-bl.png") no-repeat;
+  background-size: 200px 200px;
+  width:200px;
+  height:200px;
+  z-index:-1;
 }
 
-.success{
-  background-color:#04AA6D;
-}
-
-.error{
-  background-color:red;
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-
-.form-signin .checkbox {
-  font-weight: 400;
-}
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.br{
+  position:fixed;
+  bottom:0;
+  right:0;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-br.png") no-repeat;
+  background-size: 200px 200px;
+  width:200px;
+  height:200px;
+  z-index:-1;
 }
 </style>

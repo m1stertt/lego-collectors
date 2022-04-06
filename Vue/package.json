@@ -22,25 +22,38 @@
     "express": "^4.17.3",
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
+    "pinia": "^2.0.12",
     "popper.js": "^1.15.0",
+    "primeicons": "^5.0.0",
+    "primevue": "^3.12.2",
     "sweetalert2": "^11.4.2",
+    "ts-loader": "~8.2.0",
     "vee-validate": "^2.2.15",
     "vue": "^3.2.31",
+    "vue-class-component": "^8.0.0-0",
     "vue-jwt-decode": "^0.1.0",
     "vue-loader-v16": "npm:vue-loader@^16.0.0-alpha.3",
     "vue-router": "^4.0.12",
+    "vue-template-compiler": "^2.6.14",
     "vuex": "^4.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "^4.5.9",
     "@vue/cli-plugin-eslint": "^4.5.9",
-    "@vue/cli-service": "^4.5.9",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "^4.5.17",
     "@vue/compiler-sfc": "^3.0.2",
+    "@vue/eslint-config-typescript": "^7.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^7.1.0",
-    "vue-axios": "^3.4.1"
+    "typescript": "~4.5.5",
+    "vue-axios": "^3.4.1",
+    "vue-cli-plugin-ts": "~0.0.3"
   },
   "eslintConfig": {
     "root": true,
@@ -49,10 +62,11 @@
     },
     "extends": [
       "plugin:vue/vue3-essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
     "rules": {}
   },

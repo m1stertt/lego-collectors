@@ -1,24 +1,23 @@
 <template>
-  <div class="container">
-    <router-link to="/login">Back</router-link>
-    <div class="card">
-      <div class="card-body">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
+  <div class="surface-card p-4 shadow-2 border-round">
+    <div class="text-center mb-5">
+      <router-link to="/login">Back</router-link>
+      <div class="card">
+        <div class="card-body">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
 
-        <label for="email"><b>Email</b></label>
-        <input id="email" v-model="user.email" ref="email" type="email" placeholder="Enter Email" name="email" />
+          <label for="email"><b>Email</b></label>
+          <input id="email" v-model="user.email" ref="email" type="email" placeholder="Enter Email" name="email" />
 
-        <label for="psw"><b>Password</b></label>
-        <input id="psw" v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw" />
+          <label for="psw"><b>Password</b></label>
+          <input id="psw" v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw" />
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input id="psw-repeat" v-model="user.repeatPassword" type="password" placeholder="Repeat Password" name="psw-repeat" />
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input id="psw-repeat" v-model="user.repeatPassword" type="password" placeholder="Repeat Password" name="psw-repeat" />
 
-        <div class="clearfix">
-          <button type="button" class="CancelBtn error" v-on:click="back">Cancel</button>
-          <button type="submit" class="SignupBtn success" v-on:click="signup">Sign Up</button>
+          <Button type="submit" v-on:click="signup">Sign Up</Button>
         </div>
       </div>
     </div>
@@ -41,12 +40,9 @@ export default({
   setup() {
   },
   methods:{
-    back(){
-      this.$router.push({ name: 'Login' });
-    },
     signup(){
       if(this.checkValidation()){
-        axios.post(this.hostname + "api/auth/RegisterUser",{
+        axios.post("api/auth/RegisterUser",{
             email: this.user.email,
             password: this.user.password,
           })
@@ -54,7 +50,7 @@ export default({
               if (response.status) {
                 Swal.fire("Successfully registered")
                     .then(() => {
-                      this.back();
+                      this.$router.push("/login")
                     });
               }else{
                 Swal.fire("Error : Something went wrong.");
