@@ -40,19 +40,15 @@ namespace lego_collectors.Controllers
         [HttpGet(nameof(GetProfile))]
         public ActionResult<ProfileDto> GetProfile()
         {
-            var user = HttpContext.Items["LoginUser"] as LoginUser;
-            if (user != null)
+            if (HttpContext.Items["LoginUser"] is not LoginUser user) return Unauthorized();
+            List<Permission> permissions = _authService.GetPermissions(user.Id);
+            return Ok(new ProfileDto
             {
-                List<Permission> permissions = _authService.GetPermissions(user.Id);
-                return Ok(new ProfileDto
-                {
-                    Id = user.Id,
-                    Permissions = permissions.Select(p => p.Name).ToList(),
-                    Email = user.Email
-                });
-            }
+                Id = user.Id,
+                Permissions = permissions.Select(p => p.Name).ToList(),
+                Email = user.Email
+            });
 
-            return Unauthorized();
         }
 
         [AllowAnonymous]

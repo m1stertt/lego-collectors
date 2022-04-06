@@ -12,6 +12,10 @@
             <label for="pwd">Password:</label>
             <input id="pwd" v-model="user.password" ref="psw" type="password" class="form-control" placeholder="Enter password" name="pwd" />
           </div>
+          <span class="p-buttonset">
+              <Button label="Sign in" v-on:click="login" />
+              <Button label="Sign up" v-on:click="signup" />
+          </span>
           <div class="clearfix">
             <button type="button" class="signin" v-on:click="login">Sign in</button>
             <button type="button" class="signup error" v-on:click="signup">Sign up</button>
@@ -22,39 +26,33 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 //import axios from 'axios';
 import Swal from 'sweetalert2';
 import { UserStore } from "@/stores/userStore";
+import router from '../router'
 const userStore = UserStore();
+const user={email:"",password:""};
 
-export default {
-  data(){
-    return{
-      user:{
-        email:"",
-        password:""
+function signup(){
+  router.push({ name: 'Register' });
+}
+
+function login(){
+  if(checkValidation()){
+    userStore.loginUser(user.email,user.password).then(response => {
+      if(response.message=="Success"){
+        router.push({name:"Home"});
+      }else{
+        Swal.fire("Error : Something went wrong.");
       }
-    }
-  },
-  methods:{
-    signup(){
-      this.$router.push({ name: 'Register' });
-    },
-    login(){
-      if(this.checkValidation()){
-        userStore.loginUser(this.user.email,this.user.password).then(response => {
-          if(response.status){
-            localStorage.setItem('token', JSON.stringify(response.data.token));
-            response.data.token = "";
-            localStorage.setItem('user', JSON.stringify(response.data));
-            this.$router.push({name:"Home"});
-          }
-        }).catch(error => {
-          if (error.response) {
-            Swal.fire(error.response.data);
-          }
-        });/*
+    }).catch(error => {
+      if (error.response) {
+        Swal.fire(error.response.data);
+      }else{
+        Swal.fire("Error : Something went wrong.");
+      }
+    });/*
         axios.post(this.hostname + "api/auth/Login",{
           email: this.user.email,
           password: this.user.password,
@@ -72,27 +70,26 @@ export default {
                 Swal.fire(error.response.data);
               }
             });*/
-      }
-    },
-    checkValidation(){
-      if(!this.user.email){
-        this.$refs.email.focus();
-        Swal.fire("Give email !");
-        return;
-      }
-      if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
-        this.$refs.email.focus();
-        Swal.fire("Invalid email !");
-        return;
-      }
-      if(!this.user.password){
-        this.$refs.password.focus();
-        Swal.fire("Give password");
-        return;
-      }
-      return true;
-    }
   }
+}
+
+function checkValidation(){
+  if(!user.email){
+    this.$refs.email.focus();
+    Swal.fire("Give email !");
+    return;
+  }
+  if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(user.email)){
+    this.$refs.email.focus();
+    Swal.fire("Invalid email !");
+    return;
+  }
+  if(!user.password){
+    this.$refs.password.focus();
+    Swal.fire("Give password");
+    return;
+  }
+  return true;
 }
 </script>
 
