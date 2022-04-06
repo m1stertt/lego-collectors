@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export class UserService {
-  async createUser(name: string, email: string, password:string){
+  async createUser(email: string, password:string){
     const res = await axios.post("/api/auth/RegisterUser", {
-      name: name,
       email: email,
       password: password,
     });

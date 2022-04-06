@@ -19,10 +19,10 @@ export const UserStore = defineStore({
     logout(){
       this.loggedInUser={ email:""} as User;
     },
-    createUser(name: string, email: string, password: string) {
+    createUser(email: string, password: string) {
       return new Promise((resolve, reject) => {
         userService
-          .createUser(name, email, password)
+          .createUser(email, password)
           .then((token) => {
             if(token.token) localStorage.setItem('token', token.token);
             resolve(token);

@@ -27,10 +27,8 @@ const items = [
     </Menubar>
   </div>
 </div>
-<div class="grid">
-  <div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1">
-    <RouterView />
-  </div>
+<div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1">
+  <RouterView />
 </div>
 </template>
 

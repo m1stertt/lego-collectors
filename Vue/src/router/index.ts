@@ -44,7 +44,11 @@ router.beforeEach((to, from, next) => {
         }).catch(r=>console.log(r));
       }
     }
-    next();
+    if(!authRequired&&loggedIn){
+      next("/");
+    }else{
+      next();
+    }
   }
 });
 
