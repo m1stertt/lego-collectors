@@ -1,95 +1,81 @@
 <template>
-  <div class="col-md-12">
-    <div class="container">
-      <h3 class="e-shop-font">Login Page</h3>
-      <div class="card">
-        <div class="card-body">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input id="email" v-model="user.email" ref="email" type="email" class="form-control" placeholder="Enter email" name="email" />
-          </div>
-          <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input id="pwd" v-model="user.password" ref="psw" type="password" class="form-control" placeholder="Enter password" name="pwd" />
-          </div>
-          <span class="p-buttonset">
-              <Button label="Sign in" v-on:click="login" />
-              <Button label="Sign up" v-on:click="signup" />
-          </span>
-          <div class="clearfix">
-            <button type="button" class="signin" v-on:click="login">Sign in</button>
-            <button type="button" class="signup error" v-on:click="signup">Sign up</button>
-          </div>
-        </div>
+  <div class="text-center mb-5">
+      <img src="https://www.pngall.com/wp-content/uploads/5/Lego-Toy-PNG-Image-HD.png" alt="Image" height="200" class="mb-3">
+  </div>
+  <div class="surface-card p-4 shadow-2 border-round w-full">
+      <div class="text-center mb-5">
+          <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+          <span class="text-600 font-medium line-height-3">Don't have an account?</span>
+          <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" v-on:click="signup">Create today!</a>
       </div>
-    </div>
+
+      <div>
+          <label for="email" class="block text-900 font-medium mb-2">Email</label>
+          <InputText id="email" v-model="user.email" ref="email" type="email" class="form-control w-full mb-3" placeholder="Enter email" name="email" />
+
+          <label for="password" class="block text-900 font-medium mb-2">Password</label>
+          <InputText id="password" v-model="user.password" ref="password" type="password" class="form-control w-full mb-3" placeholder="Enter password" name="pwd" />
+
+          <Button label="Sign In" icon="pi pi-user" class="w-full" v-on:click="login"></Button>
+      </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script>
 //import axios from 'axios';
 import Swal from 'sweetalert2';
 import { UserStore } from "@/stores/userStore";
-import router from '../router'
-const userStore = UserStore();
-const user={email:"",password:""};
 
-function signup(){
-  router.push({ name: 'Register' });
-}
-
-function login(){
-  if(checkValidation()){
-    userStore.loginUser(user.email,user.password).then(response => {
-      if(response.message=="Success"){
-        router.push({name:"Home"});
-      }else{
-        Swal.fire("Error : Something went wrong.");
+export default {
+  data(){
+    return{
+      user:{
+        email:"",
+        password:""
       }
-    }).catch(error => {
-      if (error.response) {
-        Swal.fire(error.response.data);
-      }else{
-        Swal.fire("Error : Something went wrong.");
+    }
+  },
+  methods:{
+    signup(){
+      this.$router.push({ name: 'Register' });
+    },
+    login(){
+      if(this.checkValidation()){
+        const userStore = UserStore();
+        userStore.loginUser(this.user.email,this.user.password).then(response => {
+          if(response){
+            this.$router.push({name:"Home"});
+          }else{
+            Swal.fire("Error : Something went wrong.");
+          }
+        }).catch(error => {
+          if (error.response) {
+            Swal.fire(error.response.data);
+          }else{
+            Swal.fire("Error : Something went wrong.");
+          }
+        });
       }
-    });/*
-        axios.post(this.hostname + "api/auth/Login",{
-          email: this.user.email,
-          password: this.user.password,
-          })
-            .then(response => {
-              if(response.status){
-                localStorage.setItem('token', JSON.stringify(response.data.token));
-                response.data.token = "";
-                localStorage.setItem('user', JSON.stringify(response.data));
-                this.$router.push({name:"Home"});
-              }
-            })
-            .catch(error => {
-              if (error.response) {
-                Swal.fire(error.response.data);
-              }
-            });*/
+    },
+    checkValidation(){
+      if(!this.user.email){
+        this.$refs.email.$el.focus();
+        Swal.fire("Give email !");
+        return;
+      }
+      if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
+        this.$refs.email.$el.focus();
+        Swal.fire("Invalid email !");
+        return;
+      }
+      if(!this.user.password){
+        this.$refs.password.$el.focus();
+        Swal.fire("Give password");
+        return;
+      }
+      return true;
+    }
   }
-}
-
-function checkValidation(){
-  if(!user.email){
-    this.$refs.email.focus();
-    Swal.fire("Give email !");
-    return;
-  }
-  if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(user.email)){
-    this.$refs.email.focus();
-    Swal.fire("Invalid email !");
-    return;
-  }
-  if(!user.password){
-    this.$refs.password.focus();
-    Swal.fire("Give password");
-    return;
-  }
-  return true;
 }
 </script>
 

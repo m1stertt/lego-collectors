@@ -8,7 +8,6 @@ export const UserStore = defineStore({
   id: "userStore",
   state: () => ({
     loggedInUser: { email: "" } as User,
-    token: String,
   }),
   getters: {
     email: (state) => {
@@ -17,6 +16,9 @@ export const UserStore = defineStore({
     },
   },
   actions: {
+    logout(){
+      this.loggedInUser={ email:""} as User;
+    },
     createUser(name: string, email: string, password: string) {
       return new Promise((resolve, reject) => {
         userService
@@ -52,6 +54,7 @@ export const UserStore = defineStore({
               resolve(profile);
             })
             .catch((err) => {
+              localStorage.removeItem("token");
               reject(err);
             });
       });

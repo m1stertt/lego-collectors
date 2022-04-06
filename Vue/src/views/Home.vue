@@ -1,24 +1,16 @@
 <template>
-  <button type="button" class="error" v-on:click="logoutClick" style="width:150px;">Logout</button>
-  <br>
-  Home
-  <div class="grid">
-    <div class="col">1</div>
-    <div class="col">2</div>
-    <div class="col">3</div>
+  <div class="surface-card p-4 shadow-2 border-round">
+    <div class="text-3xl font-medium text-900 mb-3">My lego collection</div>
+    <div class="font-medium text-500 mb-3">Some additional text.</div>
+    <div style="height: 150px" class="border-2 border-dashed surface-border"></div>
   </div>
 </template>
 
 <script>
-import { logout } from '@/composables/logout'
 
 export default {
   name: "Home",
   methods:{
-    logoutClick(){
-      logout()
-      this.$router.push('/login');
-    }
   }
 }
 </script>
