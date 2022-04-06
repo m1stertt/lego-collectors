@@ -1,4 +1,4 @@
-import { Lego } from "@/models/Lego";
+import type { Lego } from "@/models/Lego";
 import axios from "axios";
 
 export class CollectionService {
