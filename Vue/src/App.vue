@@ -17,6 +17,8 @@ import MenuComponent from "./component/MenuComponent.vue";
 body{
   padding:0px;
   margin:0px;
+  font-family: 'Quicksand', sans-serif;
+  background:#f1f2f6;
 }
 .bl{
   position:fixed;

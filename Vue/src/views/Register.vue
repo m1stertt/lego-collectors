@@ -1,9 +1,9 @@
 <template>
-  <div class="surface-card p-4 shadow-2 border-round">
+  <div class="surface-card p-4 shadow-2 border-round" style="margin-top:75px;">
     <div class="text-center mb-5">
-      <router-link to="/login">Back</router-link>
       <div class="card">
         <div class="card-body">
+          <router-link to="/login">Back</router-link>
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
           <hr>
