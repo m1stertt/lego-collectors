@@ -1,5 +1,5 @@
 <template>
-  <div class="surface-card p-4 shadow-2 border-round" style="margin-top:75px;">
+  <div class="surface-card p-4 shadow-2 border-round" style="margin-top:px;">
     <div class="text-center mb-5">
       <div class="card">
         <div class="card-body">

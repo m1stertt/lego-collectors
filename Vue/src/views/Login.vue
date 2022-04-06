@@ -5,7 +5,7 @@
   <div class="grid">
     <div class="col-12 md:col-8 md:col-offset-2 lg:col-8 lg:col-offset-2">
       <div class="text-center mb-5">
-          <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+          <div class="text-900 text-3xl font-medium mb-3">My Lego Collection</div>
           <span class="text-600 font-medium line-height-3">Don't have an account?</span>
           <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" v-on:click="signup">Create today!</a>
       </div>
