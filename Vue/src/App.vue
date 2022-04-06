@@ -1,17 +1,20 @@
 <script lang="ts">
-function changeTheme(theme: string) {
+import type { Theme } from "@/models/Theme";
+function changeTheme(theme:string) {
   let themeElement = document.getElementById("theme-link");
   if (themeElement == null) return;
   themeElement.setAttribute(
     "href",
-    "https://unpkg.com/primevue/resources/themes/" + theme.code + "/theme.css"
+    "https://unpkg.com/primevue/resources/themes/" + theme + "/theme.css"
   );
-  localStorage.setItem("theme", JSON.stringify(theme));
 }
 export default {
   data() {
     return {
-      selectedTheme: null,
+      selectedTheme: {
+        name: "Lara light indigo",
+        code: "lara-light-indigo",
+      } as Theme,
       themes: [
         { name: "Lara light indigo", code: "lara-light-indigo" },
         { name: "Fluent", code: "fluent-light" },
@@ -24,16 +27,17 @@ export default {
     };
   },
   created() {
-    const theme = JSON.parse(localStorage.getItem("theme"));
-    console.log(theme);
+    const theme = localStorage.getItem("theme");
     if (theme != null) {
-      this.selectedTheme=theme;
+      const themeObject = JSON.parse(theme) as Theme;
+      this.data().selectedTheme = themeObject;
     }
   },
   watch: {
     selectedTheme: {
-      handler(oldVal) {
-        changeTheme(oldVal);
+      handler(oldVal: Theme) {
+        localStorage.setItem("theme", JSON.stringify(oldVal));
+        changeTheme(oldVal.code);
       },
       deep: true,
     },
