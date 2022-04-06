@@ -37,7 +37,17 @@ import { UserStore } from "@/stores/userStore";
 router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('token');
+  let loggedIn = localStorage.getItem('token');
+
+  const time=localStorage.getItem("token_duration");
+  if(time!=null&&Number.isInteger(time)){
+    if(Number.parseInt(time)<Date.now()){
+      loggedIn=null;
+      localStorage.removeItem("token");
+    }
+  }
+
+
   //@todo Confirm token here on backend?
   const userStore = UserStore();
   if (authRequired && !loggedIn) {

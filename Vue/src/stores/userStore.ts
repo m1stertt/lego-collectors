@@ -25,6 +25,7 @@ export const UserStore = defineStore({
           .createUser(email, password)
           .then((token) => {
             if(token.token) localStorage.setItem('token', token.token);
+            localStorage.setItem('token_duration',JSON.stringify(Date.now()+1000*60*10));
             resolve(token);
           })
           .catch((err) => {
@@ -38,6 +39,7 @@ export const UserStore = defineStore({
           .loginUser(email, password)
           .then((token) => {
             if(token.token) localStorage.setItem('token', token.token);
+            localStorage.setItem('token_duration',JSON.stringify(Date.now()+1000*60*10));
             resolve(token);
           })
           .catch((err) => {

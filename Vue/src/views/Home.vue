@@ -2,9 +2,9 @@
   <div class="surface-card p-4 shadow-2 border-round">
     <div class="text-3xl font-medium text-900 mb-3">My lego collection</div>
     <div class="font-medium text-500 mb-3">Some additional text.</div>
-    <div v-if="!results.length" style="min-height: 150px" class="border-2 border-dashed surface-border">
+    <div v-if="results&&!results.length" style="min-height: 150px" class="border-2 border-dashed surface-border">
     </div>
-    <DataTable v-if="results.length" :value="results" responsiveLayout="scroll">
+    <DataTable v-if="results&&results.length" :value="results" responsiveLayout="scroll">
       <template #header>
         <div class="table-header">
           Results
@@ -19,7 +19,7 @@
         </template>
       </Column>
       <Column field="year" header="Year"></Column>
-      <Column field="amount" header="Amount you have"></Column>
+      <!--<Column field="amount" header="Amount you have"></Column>-->
       <Column field="number_Parts" header="Num. of parts"></Column>
       <template #footer>
         In total there are {{results ? results.length : 0 }} results.

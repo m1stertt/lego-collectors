@@ -22,7 +22,7 @@
       <Column field="num_parts" header="Num. of parts"></Column>
       <Column header="Select">
         <template #body="slotProps">
-          <Button v-on:click="select(slotProps.data.set_num)">Select</Button>
+          <Button v-on:click="select(slotProps.data.set_num)">Add to collection</Button>
         </template>
       </Column>
       <template #footer>
@@ -37,14 +37,17 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import { RebrickableService } from "@/services/rebrickable.service"
 import { ref } from "vue";
+import { CollectionStore } from "@/stores/collectionStore";
 const rebrickableService=new RebrickableService();
+const collectionStore = CollectionStore();
 
 const value1=ref("");
 
 const results=ref([]);
 
 function select(set_num){
-  alert(set_num);
+  let res=results.value.filter(obj=>obj.set_num==set_num)[0];
+  collectionStore.addToCollection({image:res.set_img_url,name:res.name,year:res.year,number_Parts:res.num_parts,set_Number:res.set_num,amount:1});
 }
 
 function change(){

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using LegoCollectors.Core.IServices;
 using LegoCollectors.Core.Models;
@@ -22,6 +23,7 @@ namespace lego_collectors.Controllers
         [HttpGet]
         public ActionResult<List<Lego>> GetAll()
         {
+            Console.WriteLine("Test");
             if (HttpContext.Items["LoginUser"] is not LoginUser user) return Unauthorized();
             return Ok(_legoService.GetLegos(user.Id));
         }
@@ -40,11 +42,14 @@ namespace lego_collectors.Controllers
         [HttpPost]  
         public ActionResult<Lego> Post([FromBody] Lego lego)
         {
+            Console.WriteLine("HELLO WORLD");
+            Console.WriteLine(lego);
             if (lego == null)
             {
                 return BadRequest("A lego is required before creating a lego in the repository.");
             }
-            
+            if (HttpContext.Items["LoginUser"] is not LoginUser user) return Unauthorized();
+            lego.OwnerId = user.Id;
             return Ok(_legoService.Create(lego));
         }
         

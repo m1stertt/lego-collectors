@@ -1,3 +1,4 @@
+import { Lego } from "@/models/Lego";
 import { defineStore } from "pinia";
 import { CollectionService } from "../services/collection.service";
 
@@ -20,13 +21,24 @@ export const CollectionStore = defineStore({
         collectionService
             .getCollection()
             .then((collection) => {
-              console.log(collection);
               resolve(collection);
             })
             .catch((err) => {
               reject(err);
             });
       });
-    }
+    },
+    addToCollection(lego: Lego){
+      return new Promise((resolve, reject) => {
+        collectionService
+            .addToCollection(lego)
+            .then((collection) => {
+              resolve(collection);
+            })
+            .catch((err) => {
+              reject(err);
+            });
+      });
+    },
   },
 });
