@@ -116,7 +116,7 @@ namespace lego_collectors
                 options.AddPolicy("Production-cors", prodPolicy =>
                 {
                     prodPolicy
-                        .SetIsOriginAllowed(o => true)
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                     .WithExposedHeaders("X-Pagination");
