@@ -48,8 +48,8 @@ export default {
 <template>
   <MenuComponent></MenuComponent>
   <Dropdown
-    v-model="selectedTheme"
-    :options="themes"
+    v-model="this.selectedTheme"
+    :options="this.themes"
     optionLabel="name"
     placeholder="Themes"
     style="width:200px;margin-left:10px;"
