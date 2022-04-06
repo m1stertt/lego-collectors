@@ -30,6 +30,10 @@ const items = [
 <div class="col-12 md:col-10 md:col-offset-1 lg:col-10 lg:col-offset-1">
   <RouterView />
 </div>
+<div class="bl">
+</div>
+<div class="br">
+</div>
 </template>
 
 <style>
@@ -42,5 +46,26 @@ body{
 }
 .p-menuitem-link:hover{
   background:#424242!important;
+}
+.bl{
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-bl.png");
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  width:200px;
+  height:200px;
+}
+
+.br{
+  position:absolute;
+  bottom:0;
+  right:0;
+  background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/319423/lego-bg-br.png");
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  width:200px;
+  height:200px;
 }
 </style>
