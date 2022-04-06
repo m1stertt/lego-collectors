@@ -43,12 +43,8 @@ router.beforeEach((to, from, next) => {
   if (authRequired && !loggedIn) {
     next('/login');
   } else {
-    if(loggedIn){
-      if(!userStore.loggedInUser.id){
-        userStore.getProfile().then(r=>{
-          console.log(r);
-        }).catch(r=>console.log(r));
-      }
+    if(loggedIn&&!userStore.loggedInUser.id){
+      userStore.getProfile();
     }
     if(!authRequired&&loggedIn){
       next("/");
