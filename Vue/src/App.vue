@@ -1,6 +1,5 @@
 <script>
-import type { Theme } from "@/models/Theme";
-function changeTheme(theme:string) {
+function changeTheme(theme) {
   let themeElement = document.getElementById("theme-link");
   if (themeElement == null) return;
   themeElement.setAttribute(
@@ -14,7 +13,7 @@ export default {
       selectedTheme: {
         name: "Lara light indigo",
         code: "lara-light-indigo",
-      } as Theme,
+      },
       themes: [
         { name: "Lara light indigo", code: "lara-light-indigo" },
         { name: "Fluent", code: "fluent-light" },
@@ -29,13 +28,13 @@ export default {
   created() {
     const theme = localStorage.getItem("theme");
     if (theme != null) {
-      const themeObject = JSON.parse(theme) as Theme;
+      const themeObject = JSON.parse(theme);
       this.data().selectedTheme = themeObject;
     }
   },
   watch: {
     selectedTheme: {
-      handler(oldVal: Theme) {
+      handler(oldVal) {
         localStorage.setItem("theme", JSON.stringify(oldVal));
         changeTheme(oldVal.code);
       },
