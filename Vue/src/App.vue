@@ -15,11 +15,11 @@ export default {
         code: "lara-light-indigo",
       },
       themes: [
-        { name: "Lara light indigo", code: "lara-light-indigo" },
-        { name: "Fluent", code: "fluent-light" },
+        { name: "Lara light (Default)", code: "lara-light-indigo" },
+        //{ name: "Fluent", code: "fluent-light" },
         { name: "Bootstrap", code: "bootstrap4-light-blue"},
-        { name: "MD", code: "md-light-indigo" },
-        { name: "MDC", code: "mdc-light-indigo" },
+        //{ name: "MD", code: "md-light-indigo" },
+        { name: "Material", code: "mdc-light-indigo" },
         { name: "Rhea", code: "rhea" },
         { name: "Tailwind", code: "tailwind-light" },
         { name: "Nova", code:"nova-vue"}
