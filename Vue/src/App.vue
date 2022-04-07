@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import type { Theme } from "@/models/Theme";
 function changeTheme(theme:string) {
   let themeElement = document.getElementById("theme-link");
@@ -48,8 +48,8 @@ export default {
 <template>
   <MenuComponent></MenuComponent>
   <Dropdown
-    v-model="this.selectedTheme"
-    :options="this.themes"
+    v-model="selectedTheme"
+    :options="themes"
     optionLabel="name"
     placeholder="Themes"
     style="width:200px;margin-left:10px;"
