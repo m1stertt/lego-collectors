@@ -22,6 +22,7 @@ export default {
         { name: "MDC", code: "mdc-light-indigo" },
         { name: "Rhea", code: "rhea" },
         { name: "Tailwind", code: "tailwind-light" },
+        { name: "Nova", code:"nova-vue"}
       ],
     };
   },
@@ -29,7 +30,7 @@ export default {
     const theme = localStorage.getItem("theme");
     if (theme != null) {
       const themeObject = JSON.parse(theme);
-      this.data().selectedTheme = themeObject;
+      this.selectedTheme = themeObject;
     }
   },
   watch: {

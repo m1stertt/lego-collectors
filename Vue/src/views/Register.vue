@@ -1,23 +1,27 @@
 <template>
-  <div class="surface-card p-4 shadow-2 border-round" style="margin-top:px;">
-    <div class="text-center mb-5">
-      <div class="card">
-        <div class="card-body">
-          <router-link to="/login">Back</router-link>
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr>
+  <div class="grid">
+    <div class="col-12 md:col-8 md:col-offset-2 lg:col-8 lg:col-offset-2">
+      <div class="surface-card p-4 shadow-2 border-round">
+        <div class="text-center mb-5">
+          <div class="card">
+            <div class="card-body">
+              <router-link to="/login">Back</router-link>
+              <h1>Sign Up</h1>
+              <p>Please fill in this form to create an account.</p>
+              <hr>
 
-          <label for="email"><b>Email</b></label>
-          <input id="email" v-model="user.email" ref="email" type="email" placeholder="Enter Email" name="email" />
+              <label for="email"><b>Email</b></label>
+              <InputText id="email" v-model="user.email" ref="email" type="email" class="form-control w-full mb-3" placeholder="Enter Email" name="email" />
 
-          <label for="psw"><b>Password</b></label>
-          <input id="psw" v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw" />
+              <label for="psw"><b>Password</b></label>
+              <InputText id="psw" v-model="user.password" ref="psw" type="password" class="form-control w-full mb-3" placeholder="Enter Password" name="psw" />
 
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input id="psw-repeat" v-model="user.repeatPassword" type="password" placeholder="Repeat Password" name="psw-repeat" />
+              <label for="psw-repeat"><b>Repeat Password</b></label>
+              <InputText id="psw-repeat" v-model="user.repeatPassword" type="password" class="form-control w-full mb-3" placeholder="Repeat Password" name="psw-repeat" />
 
-          <Button type="submit" v-on:click="signup">Sign Up</Button>
+              <Button type="submit" v-on:click="signup">Sign Up</Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,8 +40,6 @@ export default({
         password:"",
       },
     }
-  },
-  setup() {
   },
   methods:{
     signup(){
@@ -91,36 +93,8 @@ export default({
 </script>
 
 <style scoped>
-.container{
-  width: 40%;
-  padding: 16px;
-}
-input[type=text], input[type=password], input[type=email] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
-  background-color: #ddd;
-  outline: none;
-}
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
-}
-button:hover {
-  opacity:1;
-}
-.CancelBtn, .SignupBtn {
-  float: left;
-  width: 50%;
-}
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
 }
 </style>
