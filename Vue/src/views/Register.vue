@@ -19,7 +19,7 @@
               <label for="psw-repeat"><b>Repeat Password</b></label>
               <InputText id="psw-repeat" v-model="user.repeatPassword" type="password" class="form-control w-full mb-3" placeholder="Repeat Password" name="psw-repeat" />
 
-              <Button type="submit" v-on:click="signup">Sign Up</Button>
+              <Button type="submit" class="w-full" v-on:click="signup">Sign Up</Button>
             </div>
           </div>
         </div>
